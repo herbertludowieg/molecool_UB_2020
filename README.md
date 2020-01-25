@@ -6,6 +6,7 @@ molecool
 [![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/molecool/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/molecool/branch/master)
 
 A python package dor analyzing and visualizing xyz file. For MolSSI best practices workshop.
+Although you should use Exatomic.
 Now on github.
 More changes.
 
