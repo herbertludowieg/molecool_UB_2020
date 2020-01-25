@@ -10,6 +10,8 @@ Although you should use Exatomic.
 Now on github.
 More changes.
 
+Updating the README file in github
+
 ### Copyright
 
 Copyright (c) 2020, Herbertl Ludowieg
