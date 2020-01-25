@@ -7,6 +7,7 @@ molecool
 
 A python package dor analyzing and visualizing xyz file. For MolSSI best practices workshop.
 Now on github.
+More changes.
 
 ### Copyright
 
