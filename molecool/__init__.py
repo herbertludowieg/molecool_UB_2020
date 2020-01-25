@@ -5,6 +5,11 @@ A python package dor analyzing and visualizing xyz file. For MolSSI best practic
 
 # Add imports here
 from .functions import *
+from .molecule import *
+from .atom_data import *
+from .measure import *
+from .visualize import *
+from .io import *
 
 # Handle versioneer
 from ._version import get_versions
