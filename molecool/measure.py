@@ -22,8 +22,10 @@ def calculate_distance(r_a, r_b):
     >>> calculate_distance(r1, r2)
     1.0
     """
-    if not isinstance(r_a, np.ndarray) or not isinstance(r_b, np.ndarray):
-        raise TypeError
+    if not isinstance(r_a, np.ndarray):
+        raise TypeError("r_a parameter needs to be a numpy array")
+    if not isinstance(r_b, np.ndarray):
+        raise TypeError("r_b parameter needs to be a numpy array")
     # This function calculates the distance between two points given as numpy arrays.
     dist = np.linalg.norm(r_a - r_b)
     return dist

@@ -9,6 +9,14 @@ def test_calculate_distance():
     r2 = np.array([1,0,0])
     assert calculate_distance(r1, r2) == 1
 
+def test_calculate_distance_error():
+    r1 = np.array([0,0,0])
+    r2 = [1,0,0]
+    with pytest.raises(TypeError):
+        dist = calculate_distance(r1, r2)
+    with pytest.raises(TypeError):
+        dist = calculate_distance(r2, r1)
+
 def test_calculate_angle():
     r1 = np.array([0,0,0])
     r2 = np.array([1,0,0])
