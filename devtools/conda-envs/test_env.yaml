@@ -13,8 +13,9 @@ dependencies:
     # dependencies
     - numpy
     - matplotlib
+    - sphinx_rtd_theme
 
     # Pip-only installs
-  #- pip:
-  #  - codecov
+  - pip:
+    - travis-sphinx
 

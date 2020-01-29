@@ -39,7 +39,6 @@ install:
   - conda activate test
     # Build and install package
   - python setup.py develop --no-deps
-  - pip install travis-sphinx
 
 
 script:
