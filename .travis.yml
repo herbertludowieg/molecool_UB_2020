@@ -48,6 +48,7 @@ script:
         rm -rf docs/*.txt;
         SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o docs/ molecool *test*;
         travis-sphinx build --source docs/;
+        ls
       fi
 
 notifications:
@@ -55,9 +56,8 @@ notifications:
 
 after_success:
   - codecov
-  - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
-        ls
-        ls doc
-        ls docs
-        travis-sphinx deploy;
-    fi
+  - ls
+  - ls doc
+  - ls docs
+  - travis-sphinx deploy;
+
