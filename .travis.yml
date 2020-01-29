@@ -42,7 +42,13 @@ install:
 
 
 script:
-  - pytest -v --cov=molecool molecool/tests/
+    - pytest -v --cov=molecool molecool/tests/
+    - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
+          coverage run --source=molecool setup.py test;
+          rm -rf docs/source/*.txt;
+          SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o docs/source/ molecool *test*;
+          travis-sphinx build;
+      fi
 
 notifications:
     email: false
