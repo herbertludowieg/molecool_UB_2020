@@ -13,6 +13,7 @@ Welcome to molecool's documentation!
    getting_started
    api
 
+.. include:: modules.txt
 
 
 Indices and tables
