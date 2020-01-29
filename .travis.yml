@@ -47,7 +47,7 @@ script:
     - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
         rm -rf docs/source/*.txt;
         SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o doc/build/ molecool *test*;
-        travis-sphinx build --source=docs/_build;
+        travis-sphinx build;
       fi
 
 notifications:
