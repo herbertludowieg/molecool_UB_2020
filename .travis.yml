@@ -55,4 +55,4 @@ notifications:
 
 after_success:
   - codecov
-  - travis-spinx deploy;
+  - travis-sphinx deploy;
