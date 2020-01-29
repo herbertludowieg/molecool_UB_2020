@@ -16,9 +16,9 @@ matrix:
     - os: linux
       language: generic  # No need to set Python version since its conda
       env: PYTHON_VER=3.6
-    - os: linux
-      language: generic
-      env: PYTHON_VER=3.7
+    #- os: linux
+    #  language: generic
+    #  env: PYTHON_VER=3.7
 
 
 before_install:
@@ -44,11 +44,11 @@ install:
 
 script:
     - pytest -v --cov=molecool molecool/tests/
-    - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
-        rm -rf docs/*.txt;
-        SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o docs/ molecool *test*;
-        travis-sphinx build --source docs/;
-      fi
+    #- if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
+    - rm -rf docs/*.txt;
+    - SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o docs/ molecool *test*;
+    - travis-sphinx build --source docs/;
+    #  fi
     - ls
 
 notifications:
