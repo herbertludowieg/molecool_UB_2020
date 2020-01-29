@@ -58,5 +58,6 @@ after_success:
   - ls
   - ls doc
   - ls docs
+  - git remote -v
   - travis-sphinx deploy
 
