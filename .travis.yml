@@ -42,6 +42,7 @@ install:
 
 
 script:
+    - export PYTHONDONTWRITEBYTECODE=1
     - pytest -v --cov=molecool molecool/tests/
     #- if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
     - rm -rf docs/*.txt;
