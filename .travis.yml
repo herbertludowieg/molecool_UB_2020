@@ -60,6 +60,8 @@ after_success:
   - ls doc
   - ls docs
   - git remote -v
+  - echo $TRAVIS_OS_NAME
+  - echo $PYTHONVER
   - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
     travis-sphinx deploy
     fi
