@@ -77,8 +77,13 @@ def calculate_molecular_mass(symbols):
     mass : float
         The mass of the molecule
 
+    Notes
+    -----
     .. math::
         \\braket{x|y}
+
+    .. math::
+        x^2
     """
     masses = list(map(lambda x: atomic_weights[x], symbols))
     mol_mass = np.sum(masses)
