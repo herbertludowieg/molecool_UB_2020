@@ -1,0 +1,7 @@
+molecool.atom\_data module
+==========================
+
+.. automodule:: molecool.atom_data
+   :members:
+   :undoc-members:
+   :show-inheritance:

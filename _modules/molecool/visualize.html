@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>molecool.visualize &mdash; molecool  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> molecool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../molecool.html">molecool package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">molecool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>molecool.visualize</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for molecool.visualize</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">.atom_data</span> <span class="kn">import</span> <span class="n">atom_colors</span>
+
+<div class="viewcode-block" id="bond_histogram"><a class="viewcode-back" href="../../molecool.visualize.html#molecool.visualize.bond_histogram">[docs]</a><span class="k">def</span> <span class="nf">bond_histogram</span><span class="p">(</span><span class="n">bond_list</span><span class="p">,</span> <span class="n">save_location</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">graph_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">graph_max</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># Draw a histogram of bond lengths based on a bond_list (output from build_bond_list function)</span>
+    <span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">bond_length</span> <span class="ow">in</span> <span class="n">bond_list</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bond_length</span><span class="p">)</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">graph_min</span><span class="p">,</span> <span class="n">graph_max</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Bond Length (angstrom)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Bonds&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">lengths</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="c1"># Save figure</span>
+    <span class="k">if</span> <span class="n">save_location</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_location</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span></div>
+        
+<div class="viewcode-block" id="draw_molecule"><a class="viewcode-back" href="../../molecool.visualize.html#molecool.visualize.draw_molecule">[docs]</a><span class="k">def</span> <span class="nf">draw_molecule</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">draw_bonds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_location</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    
+    <span class="c1"># Draw a picture of a molecule using matplotlib.</span>
+    
+    <span class="c1"># Create figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Get colors - based on atom name</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
+        <span class="n">colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom_colors</span><span class="p">[</span><span class="n">atom</span><span class="p">])</span>
+    
+    <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.markersize&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">200</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">coordinates</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
+               <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    
+    <span class="c1"># Draw bonds</span>
+    <span class="k">if</span> <span class="n">draw_bonds</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">bond_length</span> <span class="ow">in</span> <span class="n">draw_bonds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">atom1</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">atom2</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[[</span><span class="n">atom1</span><span class="p">,</span><span class="n">atom2</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span> <span class="n">coordinates</span><span class="p">[[</span><span class="n">atom1</span><span class="p">,</span><span class="n">atom2</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="n">coordinates</span><span class="p">[[</span><span class="n">atom1</span><span class="p">,</span><span class="n">atom2</span><span class="p">],</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Save figure</span>
+    <span class="k">if</span> <span class="n">save_location</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_location</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">,</span> <span class="n">graph_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">graph_max</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">ax</span></div>
+
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Herbertl Ludowieg. Project structure based on the Computational Molecular Science Python Cookiecutter version 1.1
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

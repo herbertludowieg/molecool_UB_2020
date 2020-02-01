@@ -1,0 +1,7 @@
+molecool.molecule module
+========================
+
+.. automodule:: molecool.molecule
+   :members:
+   :undoc-members:
+   :show-inheritance:

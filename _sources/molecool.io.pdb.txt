@@ -1,0 +1,7 @@
+molecool.io.pdb module
+======================
+
+.. automodule:: molecool.io.pdb
+   :members:
+   :undoc-members:
+   :show-inheritance:

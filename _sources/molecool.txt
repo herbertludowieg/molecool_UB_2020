@@ -1,0 +1,25 @@
+molecool package
+================
+
+.. automodule:: molecool
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   molecool.io
+
+Submodules
+----------
+
+.. toctree::
+
+   molecool.atom_data
+   molecool.functions
+   molecool.measure
+   molecool.molecule
+   molecool.visualize

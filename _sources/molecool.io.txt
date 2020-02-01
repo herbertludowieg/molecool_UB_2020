@@ -1,0 +1,15 @@
+molecool.io package
+===================
+
+.. automodule:: molecool.io
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   molecool.io.pdb
+   molecool.io.xyz
