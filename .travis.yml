@@ -63,6 +63,6 @@ after_success:
   - echo $TRAVIS_OS_NAME
   - echo $PYTHON_VER
   - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHON_VER == 3.6 ]]; then
-    travis-sphinx deploy
+      travis-sphinx deploy;
     fi
 
