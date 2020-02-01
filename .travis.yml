@@ -44,7 +44,7 @@ install:
 script:
     - export PYTHONDONTWRITEBYTECODE=1
     - pytest -v --cov=molecool molecool/tests/
-    - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
+    - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHON_VER == 3.6 ]]; then
         rm -rf docs/*.txt;
         SPHINX_APIDOC_OPTIONS=members,undoc-members,show-inheritance sphinx-apidoc -eM -s txt -o docs/ molecool *test*;
         travis-sphinx build --source docs/;
@@ -61,8 +61,8 @@ after_success:
   - ls docs
   - git remote -v
   - echo $TRAVIS_OS_NAME
-  - echo $PYTHONVER
-  - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHONVER == 3.6 ]]; then
+  - echo $PYTHON_VER
+  - if [[ $TRAVIS_OS_NAME == "linux" ]] && [[ $PYTHON_VER == 3.6 ]]; then
     travis-sphinx deploy
     fi
 
